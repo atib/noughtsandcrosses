@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="nNc">
+<head>
+	<meta charset="UTF-8">
+	<title>noughts and crosses</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+	<link rel="shortcut icon" href="assets/images/favicon.ico" size="16x16">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600" rel="stylesheet" type="text/css">	
+	<link rel="stylesheet" href="assets/css/dist/loading.min.css">
+	<link rel="stylesheet" href="assets/css/dist/nNc_1.0.0.css">
+</head>
+<body>
+	
+	<div id="loading">
+		<div class="sk-folding-cube">
+		  <div class="sk-cube1 sk-cube"></div>
+		  <div class="sk-cube2 sk-cube"></div>
+		  <div class="sk-cube4 sk-cube"></div>
+		  <div class="sk-cube3 sk-cube"></div>
+		</div>
+	</div>
+
+	<div id="starting_next">
+		<div class="spinner">
+		  <div class="bounce1"></div>
+		  <div class="bounce2"></div>
+		  <div class="bounce3"></div>
+
+		</div>
+		<p class="message">Starting Next Game</p>
+	</div>
+	
+	<div class="container" ng-controller="noughtsCrossesCtrl">
+		<div class="row">
+			<div class="col-sm-6 col-sm-push-2">
+				<h1>Noughts and Crosses</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-10 col-sm-push-2">
+				<div class="row">
+
+					<div class="col-sm-2">
+						<div class="players" ng-class="currentPlayer == 1 ? 'player1' : 'none'">
+							player 1 <br><i class="fa fa-circle-o"></i>
+							<p class="scores">{{scores[0]}}</p>
+							
+						</div>
+					</div>
+
+					<div class="col-sm-4 ">
+						<section id="board" >
+
+							<div class="nx">
+								<div class="row_nx" ng-repeat="row in board.rows">
+									<div class="col_nx cell-{{cell}}" ng-click="board.check($parent.$index, $index)" ng-repeat="cell in row track by $index" ></div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-sm-10 col-sm-push-2">
+									<input type="button" ng-click="init()" value="Switch Players Starts" class="btn btn-primary">
+									<p class="message">{{message}}</p>
+								</div>
+							</div>
+
+							
+						</section>
+					</div>
+
+					<div class="col-sm-2 col-sm-push-1">
+						<div class="players" ng-class="currentPlayer == 2 ? 'player2' : 'none'">
+							player 2 <br><i class="fa fa-times"></i>
+							<p class="scores">{{scores[1]}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="assets/js/dist/noughtsandcrosses.min.js"></script>
+	<script type="text/javascript" src="assets/js/wip/noughtsandcrossesMain_1.0.0.js"></script>
+
+</body>
+</html>
